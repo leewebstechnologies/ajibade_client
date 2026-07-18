@@ -56,8 +56,18 @@ export default async function JobDetails({ params }: { params: Promise<{ slug: s
             <h2 className={styles.sectionTitle}>Job Description</h2>
             <p className={styles.summary}>{job.summary}</p>
             
-            <div className={styles.actions}>
-              <button className={styles.applyButton}>Apply Now</button>
+            <div className={styles.applicationBox}>
+              <h3 className={styles.applicationTitle}>Method of Application</h3>
+              <p className={styles.applicationText}>
+                Interested and qualified candidates should send their CV to:
+                <a 
+                  href={`mailto:${job.email}?subject=Application for ${encodeURIComponent(job.job)}`}
+                  className={styles.emailLink}
+                >
+                  {job.email}
+                </a>
+                using the Job Title as the subject of mail.
+              </p>
             </div>
           </div>
         </div>

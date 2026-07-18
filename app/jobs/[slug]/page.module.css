@@ -125,28 +125,36 @@
   white-space: pre-wrap;
 }
 
-.actions {
-  display: flex;
+.applicationBox {
   margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f0f4f8;
+  border-left: 4px solid #3044cf;
+  border-radius: 8px;
 }
 
-.applyButton {
-  background: #3044cf;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
+.applicationTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.applicationText {
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.emailLink {
+  color: #3044cf;
   font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 12px rgba(48, 68, 207, 0.2);
+  text-decoration: underline;
+  transition: color 0.2s ease;
 }
 
-.applyButton:hover {
-  background: #2336b2;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(48, 68, 207, 0.3);
+.emailLink:hover {
+  color: #2336b2;
 }
 
 @media (max-width: 640px) {

@@ -21,7 +21,7 @@ export const recruiterData = [
     job: "Frontend Developer",
     recruiter: "Dangote Group",
     company: "Dangote Group",
-    email: "careers@gmail.com",
+    email: "careers@dangote.com",
     address: "126, Lagos-Abeokuta Express Road, Lagos",
     summary:
       "Requirement: Looking for a React/Next.js developer with experience building responsive web applications and integrating REST APIs.",
