@@ -1,0 +1,161 @@
+.pageWrapper {
+  background: #f8fafc;
+  min-height: 100vh;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: color 0.2s ease;
+}
+
+.backButton:hover {
+  color: #111827;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .header {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  min-width: 150px;
+}
+
+.logo {
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  max-height: 80px;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.jobTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.recruiterName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3044cf;
+  margin-bottom: 1.5rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4b5563;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.meta svg {
+  color: #3044cf;
+}
+
+.content {
+  padding: 2.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.summary {
+  color: #4b5563;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  white-space: pre-wrap;
+}
+
+.actions {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.applyButton {
+  background: #3044cf;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(48, 68, 207, 0.2);
+}
+
+.applyButton:hover {
+  background: #2336b2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(48, 68, 207, 0.3);
+}
+
+@media (max-width: 640px) {
+  .jobTitle {
+    font-size: 1.5rem;
+  }
+  
+  .meta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
