@@ -1,169 +1,442 @@
 .pageWrapper {
-  background: #f8fafc;
   min-height: 100vh;
   padding: 4rem 0;
+  background: #f8fafc;
 }
 
 .container {
-  max-width: 900px;
+  width: 100%;
+  max-width: 950px;
   margin: 0 auto;
   padding: 0 1.25rem;
 }
+
+/* =========================================
+   BACK BUTTON
+========================================= */
 
 .backButton {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #6b7280;
-  text-decoration: none;
-  font-weight: 500;
   margin-bottom: 2rem;
+  color: #6b7280;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .backButton:hover {
-  color: #111827;
+  color: #3044cf;
 }
 
-.card {
-  background: #fff;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  overflow: hidden;
-  box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+.backButton svg {
+  flex-shrink: 0;
 }
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.card {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================================
+   JOB HEADER
+========================================= */
 
 .header {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
   padding: 2.5rem;
   border-bottom: 1px solid #e5e7eb;
-  gap: 2rem;
-}
-
-@media (min-width: 640px) {
-  .header {
-    flex-direction: row;
-    align-items: flex-start;
-  }
 }
 
 .logoWrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: #fff;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
   padding: 1rem;
+  background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  min-width: 150px;
 }
 
 .logo {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  width: auto;
-  height: auto;
-  max-height: 80px;
 }
 
 .headerInfo {
-  display: flex;
-  flex-direction: column;
   flex: 1;
+  min-width: 0;
 }
 
 .jobTitle {
+  margin: 0 0 0.6rem;
+  color: #111827;
   font-size: 2rem;
   font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
-.recruiterName {
-  font-size: 1.25rem;
-  font-weight: 600;
+.company {
+  margin: 0 0 1.5rem;
   color: #3044cf;
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
+
+
+/* =========================================
+   JOB META
+========================================= */
 
 .meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1rem 1.5rem;
 }
 
 .meta span {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   color: #4b5563;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
 }
 
 .meta svg {
+  flex-shrink: 0;
   color: #3044cf;
 }
+
+
+/* =========================================
+   CONTENT
+========================================= */
 
 .content {
   padding: 2.5rem;
 }
 
-.sectionTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 1rem;
+.section {
+  margin-bottom: 2.5rem;
 }
 
-.summary {
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  margin: 0 0 1rem;
+  color: #111827;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+
+/* =========================================
+   JOB OVERVIEW
+========================================= */
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.overviewItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 1.1rem;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.overviewItem:hover {
+  border-color: #c7cff7;
+  box-shadow: 0 4px 12px rgba(48, 68, 207, 0.06);
+}
+
+.overviewItem svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #3044cf;
+}
+
+.overviewItem div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.overviewItem span {
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.overviewItem strong {
+  color: #111827;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   JOB DESCRIPTION
+========================================= */
+
+.description {
+  margin: 0;
   color: #4b5563;
+  font-size: 1.05rem;
   line-height: 1.8;
-  font-size: 1.1rem;
-  margin-bottom: 2.5rem;
   white-space: pre-wrap;
 }
 
+
+/* =========================================
+   RESPONSIBILITIES & REQUIREMENTS
+========================================= */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 0;
+  padding-left: 1.4rem;
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.list li {
+  padding-left: 0.25rem;
+}
+
+.list li::marker {
+  color: #3044cf;
+}
+
+
+/* =========================================
+   COMPANY INFORMATION
+========================================= */
+
+.companyInfo {
+  padding: 1.25rem 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.companyInfo p {
+  margin: 0 0 0.75rem;
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.companyInfo p:last-child {
+  margin-bottom: 0;
+}
+
+.companyInfo strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   EMAIL
+========================================= */
+
+.email {
+  color: #111827;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   APPLICATION BOX
+========================================= */
+
 .applicationBox {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background-color: #f0f4f8;
+  margin-top: 2.5rem;
+  padding: 1.75rem;
+  background: #f0f4f8;
   border-left: 4px solid #3044cf;
   border-radius: 8px;
 }
 
 .applicationTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
+  margin: 0 0 0.75rem;
   color: #111827;
-  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .applicationText {
+  margin: 0;
   color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.applicationNote {
+  margin: 1rem 0 0;
+  color: #6b7280;
+  font-size: 0.9rem;
   line-height: 1.6;
-  font-size: 1.05rem;
 }
 
-.emailLink {
-  color: #3044cf;
-  font-weight: 600;
-  text-decoration: underline;
-  transition: color 0.2s ease;
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+  .pageWrapper {
+    padding: 3rem 0;
+  }
+
+  .header {
+    padding: 2rem;
+  }
+
+  .content {
+    padding: 2rem;
+  }
+
+  .jobTitle {
+    font-size: 1.75rem;
+  }
+
+  .overviewGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
-.emailLink:hover {
-  color: #2336b2;
-}
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 640px) {
+  .pageWrapper {
+    padding: 1.5rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .backButton {
+    margin-bottom: 1.25rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .logoWrapper {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+  }
+
+  .headerInfo {
+    width: 100%;
+  }
+
   .jobTitle {
     font-size: 1.5rem;
   }
-  
+
+  .company {
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
+
   .meta {
     flex-direction: column;
     gap: 0.75rem;
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+
+  .section {
+    margin-bottom: 2rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .list {
+    font-size: 0.95rem;
+  }
+
+  .applicationBox {
+    padding: 1.25rem;
+  }
+
+  .applicationTitle {
+    font-size: 1.15rem;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+  .jobTitle {
+    font-size: 1.35rem;
+  }
+
+  .content {
+    padding: 1.25rem;
+  }
+
+  .header {
+    padding: 1.25rem;
+  }
+
+  .overviewItem {
+    padding: 1rem;
   }
 }

@@ -17,19 +17,39 @@
 }
 
 .item {
-  color: #3044cf;
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
 }
 
 .item:hover {
-  color: #fff;
+  color: #3044cf;
 }
 .listItem {
   display: inline;
   margin-right: 30px;
   font-size: 14px;
   text-decoration: none;
+}
+
+.socialMediaIcons {
+  margin: 0;
+  display: flex;
+}
+
+.socialMediaIcon {
+  display: inline;
+  margin-right: 30px;
+}
+
+.icon {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.icon:hover {
+  color: #3044cf;
 }
 
 .hamburger {
@@ -41,7 +61,7 @@
 }
 
 .activeLink {
-  color: #fff;
+  color: #3044cf;
 }
 
 
@@ -89,3 +109,11 @@
 
   
 }
+
+/* 
+320px - 480px: Mobile Devices
+481px - 768px: iPads, Tablets
+769px - 1024px: Small Screens, Laptops
+1025px - 1200px: Desktops, large screens
+1021px and more - Extra large screens, TV
+*/

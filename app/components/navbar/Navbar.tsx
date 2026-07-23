@@ -14,7 +14,7 @@ const Navbar = () => {
       <Link href="/">
         <Image
           className={styles.logo}
-          src="/images/job/logo.png"
+          src="/images/logo.png"
           alt="logo"
           width={140}
           height={35}
@@ -43,7 +43,6 @@ const Navbar = () => {
             About Us
           </Link>
         </li>
-
         <li className={styles.listItem}>
           <Link
             className={clsx(
@@ -56,16 +55,18 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-      <ul className={styles.authentication}>
-        <li className={styles.listItem}>
+      <ul className={styles.socialMediaIcons}>
+        <li className={styles.socialMediaIcon}>
           <Link
-            className={clsx(
-              styles.item,
-              currentPath === "/post" && styles.activeLink,
-            )}
-            href="http://localhost:8000/recruiter/dashboard"
+            className={styles.icon}
+            href="https://www.tiktok.com/@lacrete_concept?_t=ZM-8tR5goUupDp&_r=1"
           >
-            Post A Job
+            <i className="icon fa-brands fa-linkedin-in"></i>
+          </Link>
+        </li>
+        <li className={styles.socialMediaIcon}>
+          <Link className={styles.icon} href="https://wa.me/+2348028752742">
+            <i className="icon fa-brands fa-square-whatsapp"></i>
           </Link>
         </li>
       </ul>
@@ -90,46 +91,17 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.menuItem}>
-          <Link className={styles.item} href="/portfolio">
-            Portfolio
-          </Link>
-        </li>
-        <li className={styles.menuItem}>
-          <Link className={styles.item} href="/blog">
-            Blog
-          </Link>
-        </li>
-        <li className={styles.menuItem}>
           <Link className={styles.item} href="/contact">
             Contact Us
           </Link>
         </li>
         <li className={styles.menuItem}>
-          <Link
-            className={styles.icon}
-            href="https://web.facebook.com/Lacreteconcept"
-          >
-            <i className="icon fa-brands fa-square-facebook"></i>
+          <Link className={styles.icon} href="https://www.linkedin.com/in/aliuajibade">
+             <i className="icon fa-brands fa-linkedin-in"></i>
           </Link>
         </li>
         <li className={styles.menuItem}>
-          <Link
-            className={styles.icon}
-            href="https://www.tiktok.com/@lacrete_concept?_t=ZM-8tR5goUupDp&_r=1"
-          >
-            <i className="icon fa-brands fa-tiktok"></i>
-          </Link>
-        </li>
-        <li className={styles.menuItem}>
-          <Link
-            className={styles.icon}
-            href="https://www.instagram.com/lacrete2025"
-          >
-            <i className="icon fa-brands fa-square-instagram"></i>
-          </Link>
-        </li>
-        <li className={styles.menuItem}>
-          <Link className={styles.icon} href="https://wa.me/+2348028752742">
+          <Link className={styles.icon} href="https://wa.me/+2348084838268">
             <i className="icon fa-brands fa-square-whatsapp"></i>
           </Link>
         </li>

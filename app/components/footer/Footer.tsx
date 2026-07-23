@@ -47,7 +47,7 @@ const Footer = () => {
         <h4 className={styles.heading}>Contact Us</h4>
 
         <p className={styles.address}>
-          28, Abiodun Shobanjo Street, Agidingbi, Ikeja, Lagos.
+          126, Lagos-Abeokuta Express Road, Adealu Bus Stop, Iyana-Ipaja, Lagos.
         </p>
 
         <p className={styles.address}>Email: aliuajibade317@gmail.com</p>
