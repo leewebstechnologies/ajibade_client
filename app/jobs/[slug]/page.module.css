@@ -11,9 +11,6 @@
   padding: 0 1.25rem;
 }
 
-/* =========================================
-   BACK BUTTON
-========================================= */
 
 .backButton {
   display: inline-flex;
@@ -35,11 +32,6 @@
   flex-shrink: 0;
 }
 
-
-/* =========================================
-   MAIN CARD
-========================================= */
-
 .card {
   overflow: hidden;
   background: #ffffff;
@@ -47,11 +39,6 @@
   border-radius: 16px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
-
-
-/* =========================================
-   JOB HEADER
-========================================= */
 
 .header {
   display: flex;
@@ -66,18 +53,21 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 150px;
-  height: 150px;
-  padding: 1rem;
+  width: 220px;
+  height: 180px;
+  padding: 1.25rem;
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .logo {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center;
 }
 
 .headerInfo {
@@ -101,10 +91,6 @@
 }
 
 
-/* =========================================
-   JOB META
-========================================= */
-
 .meta {
   display: flex;
   flex-wrap: wrap;
@@ -125,10 +111,6 @@
   color: #3044cf;
 }
 
-
-/* =========================================
-   CONTENT
-========================================= */
 
 .content {
   padding: 2.5rem;
@@ -204,11 +186,6 @@
   line-height: 1.4;
 }
 
-
-/* =========================================
-   JOB DESCRIPTION
-========================================= */
-
 .description {
   margin: 0;
   color: #4b5563;
@@ -216,11 +193,6 @@
   line-height: 1.8;
   white-space: pre-wrap;
 }
-
-
-/* =========================================
-   RESPONSIBILITIES & REQUIREMENTS
-========================================= */
 
 .list {
   display: flex;
@@ -240,11 +212,6 @@
 .list li::marker {
   color: #3044cf;
 }
-
-
-/* =========================================
-   COMPANY INFORMATION
-========================================= */
 
 .companyInfo {
   padding: 1.25rem 1.5rem;
@@ -269,20 +236,10 @@
   font-weight: 600;
 }
 
-
-/* =========================================
-   EMAIL
-========================================= */
-
 .email {
   color: #111827;
   font-weight: 700;
 }
-
-
-/* =========================================
-   APPLICATION BOX
-========================================= */
 
 .applicationBox {
   margin-top: 2.5rem;
@@ -313,11 +270,7 @@
   line-height: 1.6;
 }
 
-
-/* =========================================
-   TABLET
-========================================= */
-
+/* Tablet */
 @media (max-width: 768px) {
   .pageWrapper {
     padding: 3rem 0;
@@ -325,6 +278,11 @@
 
   .header {
     padding: 2rem;
+  }
+
+  .logoWrapper {
+    width: 180px;
+    height: 150px;
   }
 
   .content {
@@ -341,10 +299,7 @@
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
-
+/* Mobile */
 @media (max-width: 640px) {
   .pageWrapper {
     padding: 1.5rem 0;
@@ -366,8 +321,8 @@
   }
 
   .logoWrapper {
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 150px;
     margin: 0 auto;
   }
 

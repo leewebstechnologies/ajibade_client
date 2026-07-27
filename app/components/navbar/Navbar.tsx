@@ -113,34 +113,3 @@ const Navbar = () => {
   );
 };
 export default Navbar;
-
-{
-  /* <ul className={styles.socialMediaIcons}>
-  <li className={styles.socialMediaIcon}>
-    <Link
-      className={styles.icon}
-      href="https://web.facebook.com/Lacreteconcept"
-    >
-      <i className="icon fa-brands fa-square-facebook"></i>
-    </Link>
-  </li>
-  <li className={styles.socialMediaIcon}>
-    <Link
-      className={styles.icon}
-      href="https://www.tiktok.com/@lacrete_concept?_t=ZM-8tR5goUupDp&_r=1"
-    >
-      <i className="icon fa-brands fa-tiktok"></i>
-    </Link>
-  </li>
-  <li className={styles.socialMediaIcon}>
-    <Link className={styles.icon} href="https://www.instagram.com/lacrete2025">
-      <i className="icon fa-brands fa-square-instagram"></i>
-    </Link>
-  </li>
-  <li className={styles.socialMediaIcon}>
-    <Link className={styles.icon} href="https://wa.me/+2348028752742">
-      <i className="icon fa-brands fa-square-whatsapp"></i>
-    </Link>
-  </li>
-</ul>; */
-}

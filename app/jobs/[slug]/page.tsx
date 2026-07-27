@@ -193,8 +193,8 @@ export default async function JobDetails({
               <Image
                 src={`${IMAGE_BASE_URL}/${job.image}`}
                 alt={job.recruiter}
-                width={120}
-                height={120}
+                width={300}
+                height={200}
                 className={styles.logo}
               />
             </div>

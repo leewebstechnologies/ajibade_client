@@ -188,8 +188,8 @@ export default async function Home() {
                   <Image
                     src={`${IMAGE_BASE_URL}/${item.image}`}
                     alt={item.recruiter}
-                    width={190}
-                    height={100}
+                    width={280}
+                    height={160}
                     className={styles.image}
                   />
                 </div>

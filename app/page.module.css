@@ -52,20 +52,22 @@
 }
 
 /* Logo */
-
 .imageWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  min-height: 180px;
+  padding: 1.5rem;
   background: #fff;
-  padding: 2rem 1rem 1rem;
 }
 
 .image {
-  width: auto;
-  max-width: 180px;
-  height: 70px;
+  width: 100%;
+  max-width: 280px;
+  height: 160px;
   object-fit: contain;
+  object-position: center;
 }
 
 /* Content */
