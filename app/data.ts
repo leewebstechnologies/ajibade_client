@@ -93,3 +93,13 @@ export const recruiterData = [
     ],
   },
 ];
+
+export const aboutData = {
+  id: 1,
+  introduction: "Ajibade Recruiting Agency is a premier recruitment firm committed to connecting top-tier talent with industry-leading organizations. Founded with a vision to transform the hiring landscape, we specialize in identifying, engaging, and securing exceptional professionals across various sectors.",
+  mission: "Our mission is to empower businesses by providing customized, high-quality recruitment solutions that drive growth and success. We strive to be the bridge between exceptional talent and outstanding career opportunities, fostering mutually beneficial relationships.",
+  vision: "To be the most trusted and innovative recruitment agency globally, recognized for our commitment to excellence, integrity, and the continuous advancement of the workforce.",
+  image: "about.png",
+  created_at: "2026-07-01T00:00:00.000Z",
+  updated_at: "2026-07-01T00:00:00.000Z",
+};

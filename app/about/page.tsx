@@ -1,16 +1,6 @@
 import Image from "next/image";
 import styles from "./about.module.css";
-import { API_BASE_URL_SUPERADMIN, IMAGE_BASE_URL } from "@/config/config";
-
-type AboutItem = {
-  id: number;
-  introduction: string;
-  mission: string;
-  vision: string;
-  image: string;
-  created_at: string;
-  updated_at: string;
-};
+import { aboutData } from "@/app/data";
 
 // Convert HTML content to plain text
 const stripHTML = (html: string = "") => {
@@ -29,22 +19,9 @@ const stripHTML = (html: string = "") => {
     .trim();
 };
 
-const getAbout = async (): Promise<AboutItem | null> => {
-  const res = await fetch(`${API_BASE_URL_SUPERADMIN}/about`, {
-    cache: "no-store",
-  });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch About information");
-  }
-
-  const data: AboutItem[] = await res.json();
-
-  return data.length > 0 ? data[0] : null;
-};
-
-const About = async () => {
-  const about = await getAbout();
+const About = () => {
+  const about = aboutData;
 
   if (!about) {
     return (
@@ -64,7 +41,7 @@ const About = async () => {
       <Image
         className={styles.aboutImage}
         src={
-          about.image ? `${IMAGE_BASE_URL}/${about.image}` : "/images/about.png"
+          about.image && about.image !== "about.png" ? about.image : "/images/about.png"
         }
         width={1000}
         height={500}

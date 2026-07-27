@@ -12,15 +12,8 @@ import { notFound } from "next/navigation";
 
 import styles from "./page.module.css";
 
-import {
-  API_BASE_URL_SUPERADMIN,
-  API_BASE_URL_ADMIN1,
-  API_BASE_URL_ADMIN2,
-  API_BASE_URL_ADMIN3,
-  API_BASE_URL_ADMIN4,
-  API_BASE_URL_ADMIN5,
-  IMAGE_BASE_URL,
-} from "@/config/config";
+import { IMAGE_BASE_URL } from "@/config/config";
+import { recruiterData } from "@/app/data";
 
 type JobItem = {
   id: number;
@@ -31,9 +24,9 @@ type JobItem = {
   slug: string;
   job: string;
   location: string;
-  job_type: string;
+  jobType: string;
   salary: string;
-  posted_date: string;
+  postedDate: string;
   deadline: string;
   summary: string;
   responsibilities: string | string[];
@@ -104,30 +97,6 @@ const convertToArray = (
   }
 };
 
-// Get jobs based on admin source
-const getJobsBySource = async (source: JobSource): Promise<JobItem[]> => {
-  const apiUrls: Record<JobSource, string> = {
-    superadmin: API_BASE_URL_SUPERADMIN,
-    admin1: API_BASE_URL_ADMIN1,
-    admin2: API_BASE_URL_ADMIN2,
-    admin3: API_BASE_URL_ADMIN3,
-    admin4: API_BASE_URL_ADMIN4,
-    admin5: API_BASE_URL_ADMIN5,
-  };
-
-  const res = await fetch(`${apiUrls[source]}/job`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error(`Failed to fetch ${source} jobs`);
-  }
-
-  const data = await res.json();
-
-  return data;
-};
-
 export default async function JobDetails({
   params,
   searchParams,
@@ -138,29 +107,8 @@ export default async function JobDetails({
   // Get slug from URL
   const { slug } = await params;
 
-  // Get source from query string
-  const { source } = await searchParams;
-
-  // Valid admin sources
-  const validSources: JobSource[] = [
-    "superadmin",
-    "admin1",
-    "admin2",
-    "admin3",
-    "admin4",
-    "admin5",
-  ];
-
-  // Check if source is valid
-  if (!source || !validSources.includes(source as JobSource)) {
-    notFound();
-  }
-
-  // Fetch jobs from the correct API
-  const jobs = await getJobsBySource(source as JobSource);
-
   // Find selected job
-  const job = jobs.find((item) => item.slug === slug);
+  const job = recruiterData.find((item) => item.slug === slug);
 
   // If job does not exist
   if (!job) {
@@ -191,7 +139,7 @@ export default async function JobDetails({
             {/* Job Image */}
             <div className={styles.logoWrapper}>
               <Image
-                src={`${IMAGE_BASE_URL}/${job.image}`}
+                src={job.image?.startsWith("/") ? job.image : `${IMAGE_BASE_URL}/${job.image}`}
                 alt={job.recruiter}
                 width={300}
                 height={200}
@@ -213,7 +161,7 @@ export default async function JobDetails({
 
                 <span>
                   <Briefcase size={18} />
-                  {job.job_type}
+                  {job.jobType}
                 </span>
 
                 <span>
@@ -255,7 +203,7 @@ export default async function JobDetails({
                   <div>
                     <span>Employment Type</span>
 
-                    <strong>{job.job_type || "Not specified"}</strong>
+                    <strong>{job.jobType || "Not specified"}</strong>
                   </div>
                 </div>
 
@@ -277,7 +225,7 @@ export default async function JobDetails({
                   <div>
                     <span>Date Posted</span>
 
-                    <strong>{formatDate(job.posted_date)}</strong>
+                    <strong>{formatDate(job.postedDate)}</strong>
                   </div>
                 </div>
 

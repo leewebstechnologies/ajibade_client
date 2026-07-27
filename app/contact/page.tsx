@@ -1,6 +1,5 @@
 "use client";
 
-import { API_BASE_URL_SUPERADMIN } from "@/config/config";
 import styles from "./contact.module.css";
 import { useState } from "react";
 
@@ -35,22 +34,8 @@ const Contact = () => {
     setErrorMessage("");
 
     try {
-      const response = await fetch(`${API_BASE_URL_SUPERADMIN}/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-          errorData.error
-            ? JSON.stringify(errorData.errors)
-            : "Something went wrong",
-        );
-      }
+      // Simulate network request
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       setSuccessMessage("Message sent successfully!");
       setFormData({
@@ -97,6 +82,7 @@ const Contact = () => {
                   value={formData.name}
                   placeholder="Your full name"
                   onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -109,6 +95,7 @@ const Contact = () => {
                   value={formData.email}
                   placeholder="Your email"
                   onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -121,6 +108,7 @@ const Contact = () => {
                   value={formData.subject}
                   placeholder="Subject of your message"
                   onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -133,6 +121,7 @@ const Contact = () => {
                   rows={5}
                   placeholder="Type your message here..."
                   onChange={handleChange}
+                  required
                 />
               </div>
 
