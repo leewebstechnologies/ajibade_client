@@ -1,68 +1,102 @@
-import styles from "./about.module.css";
 import Image from "next/image";
+import styles from "./about.module.css";
+import { API_BASE_URL_SUPERADMIN, IMAGE_BASE_URL } from "@/config/config";
 
-const About = () => {
+type AboutItem = {
+  id: number;
+  introduction: string;
+  mission: string;
+  vision: string;
+  image: string;
+  created_at: string;
+  updated_at: string;
+};
+
+// Convert HTML content to plain text
+const stripHTML = (html: string = "") => {
+  return html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n\n")
+    .replace(/<\/div>/gi, "\n")
+    .replace(/<[^>]*>/g, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+};
+
+const getAbout = async (): Promise<AboutItem | null> => {
+  const res = await fetch(`${API_BASE_URL_SUPERADMIN}/about`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch About information");
+  }
+
+  const data: AboutItem[] = await res.json();
+
+  return data.length > 0 ? data[0] : null;
+};
+
+const About = async () => {
+  const about = await getAbout();
+
+  if (!about) {
+    return (
+      <div className={styles.about}>
+        <div className={styles.container}>
+          <div className={styles.section}>
+            <h2>About Us</h2>
+            <p>About information is currently unavailable.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.about}>
       <Image
         className={styles.aboutImage}
-        src="/images/about.png"
+        src={
+          about.image ? `${IMAGE_BASE_URL}/${about.image}` : "/images/about.png"
+        }
         width={1000}
         height={500}
-        alt="about"
+        alt="Ajibade Recruiting Agency"
       />
+
       <div className={styles.container}>
         <div className={styles.section}>
           <h2>Who We Are</h2>
+
           <h3>AJIBADE RECRUITING AGENCY RC 0978440</h3>
-          <p>
-            AJIBADE RECRUITING AGENCY is a professional recruitment and
-            workforce solutions company committed to connecting qualified
-            candidates with reputable employers across various industries. We
-            specialize in talent acquisition, recruitment consulting, executive
-            search, workforce outsourcing, and career advisory services, helping
-            organizations build high-performing teams while assisting job
-            seekers in achieving their career goals. Our mission is to provide
-            reliable, efficient, and transparent recruitment services that meet
-            the unique needs of both employers and candidates. We are dedicated
-            to maintaining the highest standards of professionalism, integrity,
-            and confidentiality throughout every stage of the recruitment
-            process. At AJIBADE RECRUITING AGENCY, we believe that people are
-            the foundation of every successful organization. We strive to create
-            meaningful employment opportunities by matching skilled
-            professionals with the right organizations based on experience,
-            qualifications, and organizational culture. Through our commitment
-            to excellence, innovation, and customer satisfaction, we have built
-            lasting relationships with both employers and job seekers. We are
-            also committed to promoting equal employment opportunities, ethical
-            recruitment practices, and continuous improvement in our services.
-            By leveraging industry expertise and a deep understanding of the job
-            market, we help businesses attract top talent while empowering
-            candidates to take the next step in their professional journey.
-          </p>
+
+          {/* Long HTML introduction converted to plain text */}
+          <p>{stripHTML(about.introduction)}</p>
         </div>
+
         <div className={styles.section}>
           <h2>Our Mission</h2>
-          <p>
-            To connect exceptional talent with outstanding employers by
-            delivering professional, reliable, and innovative recruitment
-            solutions. We are committed to helping organisations build
-            high-performing teams while empowering job seekers to achieve
-            meaningful career success through integrity, excellence, and
-            personalised service.
-          </p>
+
+          {/* HTML mission converted to plain text */}
+          <p>{stripHTML(about.mission)}</p>
         </div>
+
         <div className={styles.section}>
           <h2>Our Vision</h2>
-          <p>
-            To be the leading recruitment agency recognised for connecting
-            exceptional talent with outstanding employers, delivering innovative
-            workforce solutions, and building lasting partnerships founded on
-            trust, professionalism, and excellence.
-          </p>
+
+          {/* HTML vision converted to plain text */}
+          <p>{stripHTML(about.vision)}</p>
         </div>
       </div>
     </div>
   );
-}
-export default About
+};
+
+export default About;

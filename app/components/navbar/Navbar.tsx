@@ -59,7 +59,7 @@ const Navbar = () => {
         <li className={styles.socialMediaIcon}>
           <Link
             className={styles.icon}
-            href="https://www.tiktok.com/@lacrete_concept?_t=ZM-8tR5goUupDp&_r=1"
+            href="https://www.linkedin.com/in/aliuajibade"
           >
             <i className="icon fa-brands fa-linkedin-in"></i>
           </Link>
@@ -96,8 +96,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.menuItem}>
-          <Link className={styles.icon} href="https://www.linkedin.com/in/aliuajibade">
-             <i className="icon fa-brands fa-linkedin-in"></i>
+          <Link
+            className={styles.icon}
+            href="https://www.linkedin.com/in/aliuajibade"
+          >
+            <i className="icon fa-brands fa-linkedin-in"></i>
           </Link>
         </li>
         <li className={styles.menuItem}>

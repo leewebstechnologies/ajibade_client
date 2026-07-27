@@ -1,15 +1,79 @@
+"use client";
+
+import { API_BASE_URL_SUPERADMIN } from "@/config/config";
 import styles from "./contact.module.css";
+import { useState } from "react";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch(`${API_BASE_URL_SUPERADMIN}/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          errorData.error
+            ? JSON.stringify(errorData.errors)
+            : "Something went wrong",
+        );
+      }
+
+      setSuccessMessage("Message sent successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch {
+      setErrorMessage("Failed to send message!");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className={styles.contact}>
       <div className={styles.contactContainer}>
         <div className={styles.contactHeader}>
           <h1>Get in Touch</h1>
           <p>
-            We&apos;d love to hear from you. Whether you&apos;re an employer looking for
-            top talent or a job seeker exploring new opportunities, our team is
-            here to help.
+            We&apos;d love to hear from you. Whether you&apos;re an employer
+            looking for top talent or a job seeker exploring new opportunities,
+            our team is here to help.
           </p>
         </div>
 
@@ -17,14 +81,22 @@ const Contact = () => {
           <div className={styles.contactForm}>
             <h2>Send Us a Message</h2>
 
-            <form>
+            <form onSubmit={handleSubmit}>
+              {successMessage && (
+                <p className={styles.successMessage}>{successMessage}</p>
+              )}
+              {errorMessage && (
+                <p className={styles.errorMessage}>{errorMessage}</p>
+              )}
               <div className={styles.formGroup}>
                 <label htmlFor="name">Full Name</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
                   placeholder="Your full name"
+                  onChange={handleChange}
                 />
               </div>
 
@@ -34,7 +106,9 @@ const Contact = () => {
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="you@example.com"
+                  value={formData.email}
+                  placeholder="Your email"
+                  onChange={handleChange}
                 />
               </div>
 
@@ -44,7 +118,9 @@ const Contact = () => {
                   type="text"
                   id="subject"
                   name="subject"
+                  value={formData.subject}
                   placeholder="Subject of your message"
+                  onChange={handleChange}
                 />
               </div>
 
@@ -53,13 +129,19 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
                   rows={5}
                   placeholder="Type your message here..."
+                  onChange={handleChange}
                 />
               </div>
 
-              <button type="submit" className={styles.submitBtn}>
-                Send Message
+              <button
+                type="submit"
+                className={styles.submitBtn}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending ..." : "Send Message"}
               </button>
             </form>
           </div>
@@ -97,5 +179,5 @@ const Contact = () => {
       </div>
     </div>
   );
-}
-export default Contact
+};
+export default Contact;
